@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
 
   # Configuration du réseau privé avec une IP fixe
-  config.vm.network "private_network", ip: "192.168.159.41"
+  config.vm.network "private_network", ip: "192.168.56.10"
 
   # Configuration des ressources de la VM
   config.vm.provider "virtualbox" do |vb|
@@ -25,4 +25,9 @@ Vagrant.configure("2") do |config|
   #   v.vmx["memsize"] = "2048"
   #   v.vmx["numvcpus"] = "2"
   # end
+ # --- AJOUTEZ CE BLOC ICI (Question 22) ---
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "ansible/site.yml"
+    # Optionnel : on précise le dossier d'inventaire si besoin
+    # ansible.inventory_path = "ansible/inventory.ini"
 end
