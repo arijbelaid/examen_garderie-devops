@@ -1,20 +1,24 @@
 services:
   backend:
-    # Utilisation de l'image publiée sur Docker Hub
     image: arijbelaid/garderie-backend:latest
     container_name: garderie-backend
     ports:
       - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
     networks:
       - garderie-network
     restart: unless-stopped
 
   frontend:
-    # Utilisation de l'image publiée sur Docker Hub
     image: arijbelaid/garderie-frontend:latest
     container_name: garderie-frontend
     ports:
       - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
     depends_on:
       - backend
     networks:
