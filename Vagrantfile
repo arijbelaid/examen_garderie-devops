@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
 
   # Configuration du réseau privé avec une IP fixe
-  config.vm.network "private_network", ip: "192.168.56.10"
+  config.vm.network "private_network", ip: "192.168.159.41"
 
   # Configuration des ressources de la VM
   config.vm.provider "virtualbox" do |vb|
