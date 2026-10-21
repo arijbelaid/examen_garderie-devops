@@ -1,5 +1,5 @@
 ---
-- name: Provisioning de la machine virtuelle
+- name: Provisioning de la machine virtuelle (Installation de Docker)
   hosts: vagrant_vm
   become: yes
   roles:
