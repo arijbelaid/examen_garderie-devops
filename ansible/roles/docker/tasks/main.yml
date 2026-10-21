@@ -43,6 +43,6 @@
 # 6. Autoriser l'utilisateur de déploiement à exécuter Docker
 - name: Ajouter l'utilisateur au groupe docker
   user:
-    name: "{{ ansible_user | default('arij') }}" # Utilise l'utilisateur courant (arij ou vagrant)
+    name: "{{ ansible_user | default('arij') }}" 
     groups: docker
     append: yes
