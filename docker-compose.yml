@@ -1,6 +1,7 @@
 services:
   backend:
-    build: ./backend
+    # Utilisation de l'image publiée sur Docker Hub
+    image: arijbelaid/garderie-backend:latest
     container_name: garderie-backend
     ports:
       - "5000:5000"
@@ -9,7 +10,8 @@ services:
     restart: unless-stopped
 
   frontend:
-    build: ./frontend
+    # Utilisation de l'image publiée sur Docker Hub
+    image: arijbelaid/garderie-frontend:latest
     container_name: garderie-frontend
     ports:
       - "3000:3000"
