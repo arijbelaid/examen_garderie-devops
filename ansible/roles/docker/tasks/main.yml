@@ -1,5 +1,5 @@
 ---
-# 1. Installer les prérequis pour ajouter un dépôt APT
+# 1. Installer les prérequis
 - name: Installer les paquets prérequis
   apt:
     name:
@@ -10,19 +10,27 @@
     state: present
     update_cache: yes
 
-# 2. Ajouter la clé GPG officielle de Docker
-- name: Ajouter la clé GPG de Docker
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
+# 2. Créer le dossier pour les clés (Nouvelle méthode Ubuntu)
+- name: Créer le dossier /etc/apt/keyrings
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
 
-# 3. Ajouter le dépôt officiel Docker
+# 3. Télécharger la clé GPG de Docker (au lieu de apt-key)
+- name: Ajouter la clé GPG de Docker
+  get_url:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    dest: /etc/apt/keyrings/docker.asc
+    mode: '0644'
+
+# 4. Ajouter le dépôt Docker avec la nouvelle clé
 - name: Ajouter le dépôt Docker
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
     state: present
 
-# 4. Installer Docker Engine et le plugin Docker Compose
+# 5. Installer Docker Engine et Compose
 - name: Installer Docker Engine et Docker Compose
   apt:
     name:
@@ -33,14 +41,14 @@
     state: present
     update_cache: yes
 
-# 5. Démarrer et activer le service Docker
+# 6. Démarrer et activer Docker
 - name: Démarrer et activer le service Docker
   systemd:
     name: docker
     state: started
     enabled: yes
 
-# 6. Autoriser l'utilisateur de déploiement à exécuter Docker
+# 7. Autoriser l'utilisateur à exécuter Docker
 - name: Ajouter l'utilisateur au groupe docker
   user:
     name: "{{ ansible_user | default('arij') }}" 
