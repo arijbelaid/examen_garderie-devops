@@ -113,7 +113,7 @@ Après la configuration des identifiants, le pipeline CI/CD est exécuté afin d
 
 La capture suivante présente le résultat de l'exécution du pipeline Jenkins.
 
-![Pipeline Jenkins exécuté avec succès](screenshots/14_jenkins_succes.png)
+![Pipeline Jenkins exécuté avec succès](screenshots/14_jenkins_succes.png.png)
 
 ### 3.10. Publication des images sur Docker Hub
 
