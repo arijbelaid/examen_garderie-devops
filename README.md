@@ -1,113 +1,247 @@
-markdown
-# 🏡 Projet Garderie DevOps - Ma Garderie
+# 🏡 Projet Garderie DevOps — Ma Garderie
 
-Bienvenue sur le dépôt officiel du projet **Ma Garderie**, réalisé dans le cadre de l'épreuve pratique Master DevOps & Cloud.
+Bienvenue sur le dépôt officiel du projet **Ma Garderie**, réalisé dans le cadre de l'épreuve pratique du Master DevOps & Cloud.
 
-## 📋 1. Présentation de l'application et technologies
-L'application est une landing page responsive pour une garderie d'enfants, connectée à une API REST.
-*   **Frontend** : Next.js (React) + Tailwind CSS.
-*   **Backend** : Node.js + Express (API REST).
-*   **CI/CD** : Jenkins.
-*   **Infrastructure** : Vagrant et Ansible.
-*   **Conteneurisation** : Docker et Docker Compose.
+Ce projet consiste à développer et à déployer une application web pour une garderie d'enfants en utilisant les pratiques DevOps : conteneurisation, intégration continue, automatisation de l'infrastructure et déploiement.
 
-## 🏗️ 2. Architecture du projet et de la chaîne CI/CD
-*   **Code source** : Hébergé sur GitHub.
-*   **Pipeline CI/CD** : Le fichier `Jenkinsfile` définit les étapes : Checkout, Install, Test, Build Docker (Frontend/Backend), et Push vers Docker Hub.
-*   **Infrastructure as Code** : Le `Vagrantfile` configure la VM, et Ansible (rôle `docker`) automatise son provisioning.
-*   **Déploiement** : Le fichier `docker-compose.yml` utilise les images de production pour lancer l'application.
+## 📋 1. Présentation du projet
 
-## 🚀 3. Instructions de création et de provisioning de la VM
-*Note : La virtualisation imbriquée (VT-x) étant bloquée par l'environnement hôte, le playbook a été exécuté sur l'hôte local pour validation.*
+L'application **Ma Garderie** est une landing page responsive connectée à une API REST.
+
+| Élément | Technologie |
+|---|---|
+| Frontend | Next.js, React, Tailwind CSS |
+| Backend | Node.js, Express |
+| Tests automatisés | Jest |
+| CI/CD | Jenkins |
+| Conteneurisation | Docker, Docker Compose |
+| Infrastructure | Vagrant, Ansible |
+| Gestion du code source | Git, GitHub |
+| Registre d'images | Docker Hub |
+
+## 🏗️ 2. Architecture et chaîne CI/CD
+
+Le projet utilise une chaîne CI/CD permettant d'automatiser la construction, les tests et la publication des images Docker.
+
+Les principales étapes sont :
+
+1. Récupération du code source depuis GitHub.
+2. Installation des dépendances.
+3. Exécution des tests automatisés.
+4. Construction des images Docker du frontend et du backend.
+5. Publication des images sur Docker Hub.
+6. Déploiement de l'application avec Docker Compose.
+7. Automatisation de la configuration de l'infrastructure avec Ansible.
+
+Le fichier `Jenkinsfile` définit le pipeline, le `Vagrantfile` configure la machine virtuelle et le fichier `docker-compose.yml` permet de démarrer les services.
+
+## 📸 3. Réalisation du projet et preuves d'exécution
+
+### 3.1. Installation de Docker et Jenkins
+
+Cette étape consiste à préparer l'environnement DevOps en installant Docker et Jenkins. Docker permet de conteneuriser l'application, tandis que Jenkins automatise les différentes étapes du pipeline CI/CD.
+
+**Installation initiale :**
+
+![Installation de Docker et Jenkins](screenshots/01_installation_docker_jenkins.png)
+
+**Étape 2 :**
+
+![Installation Docker Jenkins étape 2](screenshots/01_installation2_docker_jenkins.png)
+
+**Étape 3 :**
+
+![Installation Docker Jenkins étape 3](screenshots/01_installation3_docker_jenkins.png)
+
+**Étape 4 :**
+
+![Installation Docker Jenkins étape 4](screenshots/01_installation4_docker_jenkins.png)
+
+### 3.2. Création de l'application
+
+Le frontend est développé avec Next.js et React. Le backend, basé sur Node.js et Express, expose une API REST permettant les échanges de données avec l'application.
+
+![Création de l'application](screenshots/02_creation_app.png)
+
+![Création de l'application — Étape 2](screenshots/02_creation2_app.png)
+
+### 3.3. Interface utilisateur — Landing page
+
+La landing page présente la garderie et constitue le point d'entrée de l'application. L'interface est conçue pour offrir une présentation claire et une navigation adaptée aux utilisateurs.
+
+![Landing page de Ma Garderie](screenshots/03_landing_page.png)
+
+![Landing page de Ma Garderie — Étape 2](screenshots/03_landing2_page.png)
+
+### 3.4. Développement et vérification de l'API REST
+
+Le backend utilise Express pour exposer les routes de l'API REST. Cette API assure la communication entre le frontend et le serveur.
+
+![API REST](screenshots/04_api_rest.png.png)
+
+![API REST — Étape 2](screenshots/04_api_rest1.png.png)
+
+![API REST — Étape 3](screenshots/04_api_rest2.png)
+
+### 3.5. Tests automatisés avec Jest
+
+Jest est utilisé pour exécuter les tests automatisés du projet. Cette étape permet de vérifier le comportement du code et de détecter certaines erreurs avant la construction des images Docker.
+
+![Tests automatisés avec Jest](screenshots/05_test_jest.png)
+
+### 3.6. Construction des images Docker
+
+Les images Docker du frontend et du backend sont construites afin de garantir un environnement d'exécution reproductible et de faciliter le déploiement.
+
+![Construction des images Docker](screenshots/06_docker_build.png)
+
+### 3.7. Déploiement local avec Docker Compose
+
+Docker Compose permet de lancer les différents services de l'application à partir du fichier `docker-compose.yml`. Il simplifie la gestion des conteneurs et leur démarrage.
+
+![Déploiement local avec Docker Compose](screenshots/07_docker_compose_local.png)
+
+### 3.8. Configuration des identifiants Jenkins
+
+Les identifiants Jenkins permettent au pipeline d'accéder aux ressources nécessaires, notamment pour publier les images sur Docker Hub. Les informations sensibles doivent être stockées dans le gestionnaire de credentials de Jenkins.
+
+![Configuration des identifiants Jenkins](screenshots/08_jenkins_credentials.png)
+
+### 3.9. Pipeline Jenkins exécuté avec succès
+
+Après la configuration des identifiants, le pipeline CI/CD est exécuté afin de vérifier le déroulement des différentes étapes d'automatisation : récupération du code source, installation des dépendances, tests, construction des images Docker et publication sur Docker Hub.
+
+La capture suivante présente le résultat de l'exécution du pipeline Jenkins.
+
+![Pipeline Jenkins exécuté avec succès](screenshots/14_jenkins_succes.png)
+
+### 3.10. Publication des images sur Docker Hub
+
+Après leur construction, les images Docker sont publiées sur Docker Hub. Elles peuvent ensuite être récupérées par l'environnement de déploiement.
+
+- **Frontend :** [arijbelaid/garderie-frontend](https://hub.docker.com/r/arijbelaid/garderie-frontend)
+- **Backend :** [arijbelaid/garderie-backend](https://hub.docker.com/r/arijbelaid/garderie-backend)
+
+![Images Docker publiées sur Docker Hub](screenshots/09_dockerhub_images.png)
+
+### 3.11. Configuration d'Ansible
+
+Ansible est utilisé pour automatiser la configuration de l'environnement. Cette approche réduit les interventions manuelles et rend le processus de provisioning plus reproductible.
+
+![Configuration Ansible](screenshots/10_ansible_config.png)
+
+![Configuration Ansible — Étape 2](screenshots/10_ansible_config2.png)
+
+### 3.12. Exécution du playbook Ansible
+
+Le playbook `site.yml` décrit les tâches d'automatisation. Il peut être exécuté à l'aide de la commande suivante :
 
 ```bash
-# Création de la VM (si l'environnement le permet)
-vagrant up
-
-# Provisioning avec Ansible
 cd ansible
 sudo ansible-playbook -i inventory.ini site.yml
-⚙️ 4. Instructions d'exécution du pipeline Jenkins
-Le pipeline est défini dans le fichier Jenkinsfile à la racine.
+```
 
-Se rendre sur l'interface Jenkins (http://192.168.159.40:8080).
+**Remarque :** la virtualisation imbriquée (VT-x) étant bloquée par l'environnement hôte, le playbook Ansible a été exécuté sur l'hôte local pour validation.
 
-Cliquer sur le job garderie-pipeline.
+![Exécution du playbook Ansible](screenshots/11_ansible_execution.png)
 
-Cliquer sur "Lancer un build". Le pipeline construira et publiera automatiquement les images.
+### 3.13. Déploiement final avec Docker Hub
 
-🔗 5. Liens vers les images Docker Hub
-Image Frontend : https://hub.docker.com/r/arijbelaid/garderie-frontend
+Le déploiement final utilise les images publiées sur Docker Hub. Docker Compose permet de démarrer les services de l'application dans l'environnement cible.
 
-Image Backend : https://hub.docker.com/r/arijbelaid/garderie-backend
-
-🐳 6. Instructions de déploiement avec Docker Compose
-Le déploiement utilise le fichier docker-compose.yml configuré pour télécharger les images depuis Docker Hub.
-
-bash
-docker compose down
-docker compose up -d
-🌐 7. Adresse d'accès à l'application déployée
-L'application est accessible depuis un navigateur web à l'adresse suivante :
-👉 http://192.168.159.40:3000
-
-📸 8. Captures d'écran (Preuves d'exécution)
-(Note : Vérifie que tes images sont bien au format .png. Si elles sont en .jpg, remplace les extensions dans le code ci-dessous).
-
-1. Installation des outils
-https://screenshots/01_installation_docker_jenkins.png
-https://screenshots/01_installation2_docker_jenkins.png
-https://screenshots/01_installation3_docker_jenkins.png
-https://screenshots/01_installation4_docker_jenkins.png
-
-2. Création de l'application
-https://screenshots/02_creation_app.png
-https://screenshots/02_creation2_app.png
-
-3. Landing Page
-https://screenshots/03_landing_page.png
-https://screenshots/03_landing2_page.png
-
-4. API REST
-https://screenshots/04_api_rest.png
-https://screenshots/04_api_rest1.png
-https://screenshots/04_api_rest2.png
-
-5. Tests automatisés réussis
-https://screenshots/05_test_jest.png
-
-6. Construction des images Docker
-https://screenshots/06_docker_build.png
-
-7. Docker Compose (Local)
-https://screenshots/07_docker_compose_local.png
-
-8. Jenkins Credentials
-https://screenshots/08_jenkins_credentials.png
-
-9. Images publiées sur Docker Hub
-https://screenshots/09_dockerhub_images.png
-
-10. Configuration Ansible
-https://screenshots/10_ansible_config.png
-https://screenshots/10_ansible_config2.png
-
-11. Exécution du playbook Ansible
-https://screenshots/11_ansible_execution.png
-
-12. Déploiement final avec Docker Hub
-https://screenshots/12_deploiement_final.png
-
-13. Application accessible dans le navigateur
-https://screenshots/13_application_finale.png
-
-text
-
-### 🚀 N'oublie pas la dernière étape :
-Après avoir collé ce contenu dans ton fichier `README.md` sur ta VM, fais le commit et le push final :
+Pour arrêter les conteneurs existants :
 
 ```bash
-cd ~/garderie-devops
-git add README.md screenshots/
-git commit -m "Etape finale: Ajout du README complet avec toutes les captures"
-git push origin main
+docker compose down
+```
+
+Pour démarrer l'application :
+
+```bash
+docker compose up -d
+```
+
+Pour vérifier l'état des services :
+
+```bash
+docker compose ps
+```
+
+![Déploiement final avec Docker Hub](screenshots/12_deploiement_final.png)
+
+### 3.14. Vérification de l'application finale
+
+La dernière étape consiste à accéder à l'application depuis un navigateur et à vérifier que l'interface est disponible.
+
+**Adresse d'accès :** [http://192.168.159.40:3000](http://192.168.159.40:3000)
+
+> Cette adresse fonctionne si la machine est accessible sur le réseau et si le frontend est exposé sur le port 3000.
+
+![Application Ma Garderie accessible dans le navigateur](screenshots/13_application_finale.png)
+
+## 🚀 4. Instructions de lancement
+
+### Prérequis
+
+- Docker et Docker Compose
+- Git
+- Jenkins, pour l'exécution du pipeline CI/CD
+- Ansible, pour l'automatisation de l'infrastructure
+- Vagrant et un hyperviseur compatible, si la virtualisation est disponible
+
+### Récupération du projet
+
+```bash
+git clone https://github.com/arijbelaid/examen_garderie-devops.git
+cd examen_garderie-devops
+```
+
+### Démarrage des services
+
+```bash
+docker compose up -d
+```
+
+### Vérification des conteneurs
+
+```bash
+docker compose ps
+```
+
+Pour consulter les logs des services :
+
+```bash
+docker compose logs -f
+```
+
+Accéder ensuite à l'adresse du frontend configurée dans l'environnement.
+
+## 🔗 5. Ressources du projet
+
+- **Dépôt GitHub :** [examen_garderie-devops](https://github.com/arijbelaid/examen_garderie-devops)
+- **Image Docker Frontend :** [garderie-frontend](https://hub.docker.com/r/arijbelaid/garderie-frontend)
+- **Image Docker Backend :** [garderie-backend](https://hub.docker.com/r/arijbelaid/garderie-backend)
+
+## ✅ 6. Conclusion
+
+Ce projet a permis de mettre en pratique les principaux concepts DevOps à travers le développement et le déploiement d'une application web conteneurisée.
+
+Les principaux objectifs sont :
+
+- Développer une application composée d'un frontend et d'un backend.
+- Mettre en place une API REST.
+- Automatiser les tests avec Jest.
+- Construire les images Docker.
+- Orchestrer les services avec Docker Compose.
+- Automatiser la configuration de l'infrastructure avec Ansible.
+- Mettre en place un pipeline CI/CD avec Jenkins.
+- Publier les images sur Docker Hub.
+- Documenter les différentes étapes avec des captures d'écran.
+
+Cette réalisation illustre l'intérêt de l'automatisation, de la conteneurisation et de l'intégration continue pour améliorer la reproductibilité et la fiabilité du déploiement.
+
+---
+
+**Projet :** Ma Garderie — Master DevOps & Cloud
+
+**Dépôt GitHub :** [examen_garderie-devops](https://github.com/arijbelaid/examen_garderie-devops)
