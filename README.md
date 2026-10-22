@@ -2,7 +2,7 @@
 
 Bienvenue sur le dépôt officiel du projet **Ma Garderie**, réalisé dans le cadre de l'épreuve pratique du Master DevOps & Cloud.
 
-Ce projet consiste à développer et déployer une application web pour une garderie d'enfants en utilisant les outils et les pratiques DevOps : conteneurisation, intégration continue, automatisation de l'infrastructure et déploiement.
+Ce projet consiste à développer et à déployer une application web pour une garderie d'enfants en utilisant les pratiques DevOps : conteneurisation, intégration continue, automatisation de l'infrastructure et déploiement.
 
 ## 📋 1. Présentation du projet
 
@@ -12,16 +12,16 @@ L'application **Ma Garderie** est une landing page responsive connectée à une 
 |---|---|
 | Frontend | Next.js, React, Tailwind CSS |
 | Backend | Node.js, Express |
-| Tests | Jest |
+| Tests automatisés | Jest |
 | CI/CD | Jenkins |
 | Conteneurisation | Docker, Docker Compose |
 | Infrastructure | Vagrant, Ansible |
-| Gestion du code | Git, GitHub |
+| Gestion du code source | Git, GitHub |
 | Registre d'images | Docker Hub |
 
 ## 🏗️ 2. Architecture et chaîne CI/CD
 
-Le projet utilise une chaîne CI/CD automatisée pour construire, tester et publier les images Docker de l'application.
+Le projet utilise une chaîne CI/CD permettant d'automatiser la construction, les tests et la publication des images Docker.
 
 Les principales étapes sont :
 
@@ -59,7 +59,7 @@ Cette étape consiste à préparer l'environnement DevOps en installant Docker e
 
 ### 3.2. Création de l'application
 
-Le frontend est développé avec Next.js et React. Le backend, basé sur Node.js et Express, expose une API REST permettant de gérer les échanges de données avec l'application.
+Le frontend est développé avec Next.js et React. Le backend, basé sur Node.js et Express, expose une API REST permettant les échanges de données avec l'application.
 
 ![Création de l'application](screenshots/02_creation_app.png)
 
@@ -77,8 +77,6 @@ La landing page présente la garderie et constitue le point d'entrée de l'appli
 
 Le backend utilise Express pour exposer les routes de l'API REST. Cette API assure la communication entre le frontend et le serveur.
 
-Les captures suivantes présentent les étapes de développement et de vérification de l'API.
-
 ![API REST](screenshots/04_api_rest.png.png)
 
 ![API REST — Étape 2](screenshots/04_api_rest1.png.png)
@@ -93,7 +91,7 @@ Jest est utilisé pour exécuter les tests automatisés du projet. Cette étape 
 
 ### 3.6. Construction des images Docker
 
-Les images Docker du frontend et du backend sont construites afin de garantir un environnement d'exécution reproductible et de faciliter leur déploiement.
+Les images Docker du frontend et du backend sont construites afin de garantir un environnement d'exécution reproductible et de faciliter le déploiement.
 
 ![Construction des images Docker](screenshots/06_docker_build.png)
 
@@ -109,7 +107,15 @@ Les identifiants Jenkins permettent au pipeline d'accéder aux ressources néces
 
 ![Configuration des identifiants Jenkins](screenshots/08_jenkins_credentials.png)
 
-### 3.9. Publication des images sur Docker Hub
+### 3.9. Pipeline Jenkins exécuté avec succès
+
+Après la configuration des identifiants, le pipeline CI/CD est exécuté afin de vérifier le déroulement des différentes étapes d'automatisation : récupération du code source, installation des dépendances, tests, construction des images Docker et publication sur Docker Hub.
+
+La capture suivante présente le résultat de l'exécution du pipeline Jenkins.
+
+![Pipeline Jenkins exécuté avec succès](screenshots/14_jenkins_succes.png)
+
+### 3.10. Publication des images sur Docker Hub
 
 Après leur construction, les images Docker sont publiées sur Docker Hub. Elles peuvent ensuite être récupérées par l'environnement de déploiement.
 
@@ -118,7 +124,7 @@ Après leur construction, les images Docker sont publiées sur Docker Hub. Elles
 
 ![Images Docker publiées sur Docker Hub](screenshots/09_dockerhub_images.png)
 
-### 3.10. Configuration d'Ansible
+### 3.11. Configuration d'Ansible
 
 Ansible est utilisé pour automatiser la configuration de l'environnement. Cette approche réduit les interventions manuelles et rend le processus de provisioning plus reproductible.
 
@@ -126,9 +132,9 @@ Ansible est utilisé pour automatiser la configuration de l'environnement. Cette
 
 ![Configuration Ansible — Étape 2](screenshots/10_ansible_config2.png)
 
-### 3.11. Exécution du playbook Ansible
+### 3.12. Exécution du playbook Ansible
 
-Le playbook `site.yml` décrit les tâches d'automatisation. Il est exécuté à l'aide de la commande suivante :
+Le playbook `site.yml` décrit les tâches d'automatisation. Il peut être exécuté à l'aide de la commande suivante :
 
 ```bash
 cd ansible
@@ -139,7 +145,7 @@ sudo ansible-playbook -i inventory.ini site.yml
 
 ![Exécution du playbook Ansible](screenshots/11_ansible_execution.png)
 
-### 3.12. Déploiement final avec Docker Hub
+### 3.13. Déploiement final avec Docker Hub
 
 Le déploiement final utilise les images publiées sur Docker Hub. Docker Compose permet de démarrer les services de l'application dans l'environnement cible.
 
@@ -163,7 +169,7 @@ docker compose ps
 
 ![Déploiement final avec Docker Hub](screenshots/12_deploiement_final.png)
 
-### 3.13. Vérification de l'application finale
+### 3.14. Vérification de l'application finale
 
 La dernière étape consiste à accéder à l'application depuis un navigateur et à vérifier que l'interface est disponible.
 
@@ -179,29 +185,33 @@ La dernière étape consiste à accéder à l'application depuis un navigateur e
 
 - Docker et Docker Compose
 - Git
-- Jenkins, pour l'exécution du pipeline
+- Jenkins, pour l'exécution du pipeline CI/CD
 - Ansible, pour l'automatisation de l'infrastructure
 - Vagrant et un hyperviseur compatible, si la virtualisation est disponible
 
-### Déploiement
-
-Récupérer le projet :
+### Récupération du projet
 
 ```bash
 git clone https://github.com/arijbelaid/examen_garderie-devops.git
 cd examen_garderie-devops
 ```
 
-Démarrer les services :
+### Démarrage des services
 
 ```bash
 docker compose up -d
 ```
 
-Vérifier les conteneurs :
+### Vérification des conteneurs
 
 ```bash
 docker compose ps
+```
+
+Pour consulter les logs des services :
+
+```bash
+docker compose logs -f
 ```
 
 Accéder ensuite à l'adresse du frontend configurée dans l'environnement.
@@ -216,14 +226,14 @@ Accéder ensuite à l'adresse du frontend configurée dans l'environnement.
 
 Ce projet a permis de mettre en pratique les principaux concepts DevOps à travers le développement et le déploiement d'une application web conteneurisée.
 
-Les objectifs principaux sont :
+Les principaux objectifs sont :
 
 - Développer une application composée d'un frontend et d'un backend.
 - Mettre en place une API REST.
 - Automatiser les tests avec Jest.
 - Construire les images Docker.
 - Orchestrer les services avec Docker Compose.
-- Automatiser la configuration avec Ansible.
+- Automatiser la configuration de l'infrastructure avec Ansible.
 - Mettre en place un pipeline CI/CD avec Jenkins.
 - Publier les images sur Docker Hub.
 - Documenter les différentes étapes avec des captures d'écran.
@@ -232,5 +242,6 @@ Cette réalisation illustre l'intérêt de l'automatisation, de la conteneurisat
 
 ---
 
-**Projet :** Ma Garderie — Master DevOps & Cloud  
-**Dépôt :** [GitHub — examen_garderie-devops](https://github.com/arijbelaid/examen_garderie-devops)
+**Projet :** Ma Garderie — Master DevOps & Cloud
+
+**Dépôt GitHub :** [examen_garderie-devops](https://github.com/arijbelaid/examen_garderie-devops)
