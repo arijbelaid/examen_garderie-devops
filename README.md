@@ -134,7 +134,11 @@ Après leur construction, les images Docker sont publiées sur Docker Hub. Elles
 
 ![Images Docker publiées sur Docker Hub](screenshots/09_dockerhub_images.png)
 
-### 3.11. Configuration d'Ansible
+### 3.11. VM Vagrant démarrée et accessible en SSH
+Cette capture d'écran montre la connexion réussie à la machine virtuelle Ubuntu via la commande `vagrant ssh`.
+![Vagrant SSH](screenshots/15_vagrant_ssh.png)
+
+### 3.12. Configuration d'Ansible
 
 Ansible est utilisé pour automatiser la configuration de l'environnement. Cette approche réduit les interventions manuelles et rend le processus de provisioning plus reproductible.
 
@@ -142,7 +146,7 @@ Ansible est utilisé pour automatiser la configuration de l'environnement. Cette
 
 ![Configuration Ansible — Étape 2](screenshots/10_ansible_config2.png)
 
-### 3.12. Exécution du playbook Ansible
+### 3.13. Exécution du playbook Ansible
 
 Le playbook `site.yml` décrit les tâches d'automatisation. Il peut être exécuté à l'aide de la commande suivante :
 
@@ -154,7 +158,7 @@ sudo ansible-playbook -i inventory.ini site.yml
 
 ![Exécution du playbook Ansible](screenshots/11_ansible_execution.png)
 
-### 3.13. Déploiement final avec Docker Hub
+### 3.14. Déploiement final avec Docker Hub
 
 Le déploiement final utilise les images publiées sur Docker Hub. Docker Compose permet de démarrer les services de l'application dans l'environnement cible.
 
@@ -178,7 +182,7 @@ docker compose ps
 
 ![Déploiement final avec Docker Hub](screenshots/12_deploiement_final.png)
 
-### 3.14. Vérification de l'application finale
+### 3.15. Vérification de l'application finale
 
 La dernière étape consiste à accéder à l'application depuis un navigateur et à vérifier que l'interface est disponible.
 
