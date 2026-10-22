@@ -7,8 +7,9 @@
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
 ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white)
 
-🎨 **Design** : Conception d'une interface web moderne, responsive et adaptée à une garderie d'enfants.
-📄 **Rapport du projet** : [Consulter le rapport complet (Examen tp.pdf)](./Examen%20tp.pdf)
+> 🎨 **Design** : Conception d'une interface web moderne, responsive et adaptée à une garderie d'enfants.
+>
+> 📄 **Rapport** : [Consulter le rapport complet (Examen tp.pdf)](./Examen%20tp.pdf)
 
 Bienvenue sur le dépôt officiel du projet **Ma Garderie**, réalisé dans le cadre de l'épreuve pratique du Master DevOps & Cloud.
 
