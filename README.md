@@ -1,10 +1,16 @@
-🏡 Projet Garderie DevOps — Ma Garderie
+# 🏡 Projet Garderie DevOps — Ma Garderie
 
-🎨 Design : Conception d'une interface web moderne, responsive et adaptée à une garderie d'enfants.
+<!-- Badges -->
+![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white)
 
-📄 Rapport du projet : Consulter le rapport complet (Examen tp.pdf)
+🎨 **Design** : Conception d'une interface web moderne, responsive et adaptée à une garderie d'enfants.
+📄 **Rapport du projet** : [Consulter le rapport complet (Examen tp.pdf)](./Examen%20tp.pdf)
 
-Bienvenue sur le dépôt officiel du projet Ma Garderie, réalisé dans le cadre de l'épreuve pratique du Master DevOps & Cloud.
+Bienvenue sur le dépôt officiel du projet **Ma Garderie**, réalisé dans le cadre de l'épreuve pratique du Master DevOps & Cloud.
 
 Ce projet consiste à développer et à déployer une application web pour une garderie d'enfants en utilisant les pratiques DevOps : conteneurisation, intégration continue, automatisation de l'infrastructure et déploiement.
 ## 📋 1. Présentation du projet
