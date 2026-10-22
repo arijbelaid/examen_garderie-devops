@@ -136,7 +136,7 @@ Après leur construction, les images Docker sont publiées sur Docker Hub. Elles
 
 ### 3.11. VM Vagrant démarrée et accessible en SSH
 Cette capture d'écran montre la connexion réussie à la machine virtuelle Ubuntu via la commande `vagrant ssh`.
-![Vagrant SSH](screenshots/15_vagrant_ssh.png)
+![Vagrant SSH](screenshots/15_vagrant_ssh.png.png)
 
 ### 3.12. Configuration d'Ansible
 
