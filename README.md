@@ -47,7 +47,7 @@ Le fichier `Jenkinsfile` définit le pipeline, le `Vagrantfile` configure la mac
 
 ## 📸 3. Réalisation du projet et preuves d'exécution
 
-### 3.1. Installation de Docker et Jenkins
+### 3.1. Installation de Docker ,Jenkins, ansible et Vagrant 
 
 Cette étape consiste à préparer l'environnement DevOps en installant Docker et Jenkins. Docker permet de conteneuriser l'application, tandis que Jenkins automatise les différentes étapes du pipeline CI/CD.
 
