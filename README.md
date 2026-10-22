@@ -1,9 +1,19 @@
 # 🏡 Projet Garderie DevOps — Ma Garderie
 
+<!-- Badges -->
+![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white)
+
+> 🎨 **Design** : Conception d'une interface web moderne, responsive et adaptée à une garderie d'enfants.
+>
+> 📄 **Rapport** : [Consulter le rapport complet (Examen tp.pdf)](./Examen%20tp.pdf)
+
 Bienvenue sur le dépôt officiel du projet **Ma Garderie**, réalisé dans le cadre de l'épreuve pratique du Master DevOps & Cloud.
 
 Ce projet consiste à développer et à déployer une application web pour une garderie d'enfants en utilisant les pratiques DevOps : conteneurisation, intégration continue, automatisation de l'infrastructure et déploiement.
-
 ## 📋 1. Présentation du projet
 
 L'application **Ma Garderie** est une landing page responsive connectée à une API REST.
@@ -37,7 +47,7 @@ Le fichier `Jenkinsfile` définit le pipeline, le `Vagrantfile` configure la mac
 
 ## 📸 3. Réalisation du projet et preuves d'exécution
 
-### 3.1. Installation de Docker et Jenkins
+### 3.1. Installation de Docker ,Jenkins, ansible et Vagrant 
 
 Cette étape consiste à préparer l'environnement DevOps en installant Docker et Jenkins. Docker permet de conteneuriser l'application, tandis que Jenkins automatise les différentes étapes du pipeline CI/CD.
 
@@ -113,7 +123,7 @@ Après la configuration des identifiants, le pipeline CI/CD est exécuté afin d
 
 La capture suivante présente le résultat de l'exécution du pipeline Jenkins.
 
-![Pipeline Jenkins exécuté avec succès](screenshots/14_jenkins_succes.png)
+![Pipeline Jenkins exécuté avec succès](screenshots/14_jenkins_succes.png.png)
 
 ### 3.10. Publication des images sur Docker Hub
 
@@ -141,7 +151,6 @@ cd ansible
 sudo ansible-playbook -i inventory.ini site.yml
 ```
 
-**Remarque :** la virtualisation imbriquée (VT-x) étant bloquée par l'environnement hôte, le playbook Ansible a été exécuté sur l'hôte local pour validation.
 
 ![Exécution du playbook Ansible](screenshots/11_ansible_execution.png)
 
