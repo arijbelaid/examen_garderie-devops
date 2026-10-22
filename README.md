@@ -1,9 +1,12 @@
-# 🏡 Projet Garderie DevOps — Ma Garderie
+🏡 Projet Garderie DevOps — Ma Garderie
 
-Bienvenue sur le dépôt officiel du projet **Ma Garderie**, réalisé dans le cadre de l'épreuve pratique du Master DevOps & Cloud.
+🎨 Design : Conception d'une interface web moderne, responsive et adaptée à une garderie d'enfants.
+
+📄 Rapport du projet : Consulter le rapport complet (Examen tp.pdf)
+
+Bienvenue sur le dépôt officiel du projet Ma Garderie, réalisé dans le cadre de l'épreuve pratique du Master DevOps & Cloud.
 
 Ce projet consiste à développer et à déployer une application web pour une garderie d'enfants en utilisant les pratiques DevOps : conteneurisation, intégration continue, automatisation de l'infrastructure et déploiement.
-
 ## 📋 1. Présentation du projet
 
 L'application **Ma Garderie** est une landing page responsive connectée à une API REST.
@@ -141,7 +144,6 @@ cd ansible
 sudo ansible-playbook -i inventory.ini site.yml
 ```
 
-**Remarque :** la virtualisation imbriquée (VT-x) étant bloquée par l'environnement hôte, le playbook Ansible a été exécuté sur l'hôte local pour validation.
 
 ![Exécution du playbook Ansible](screenshots/11_ansible_execution.png)
 
